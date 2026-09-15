@@ -6,8 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -51,29 +49,26 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun BasicComponentsScreen(modifier: Modifier = Modifier) {
 
-    // coluna base da tela
+    // Coluna base da tela
     Column(
         modifier = modifier
         .fillMaxSize()
-        .background(Color.Black),
-        verticalArrangement = Arrangement.SpaceBetween
+        .background(Color.Black)
     ){
-        Row(
-            verticalAlignment = Alignment.CenterVertically
-        ){
+        Row {
             Text(
                 text = "Score: 0050",
                 fontWeight = FontWeight.Bold,
                 color = Color.White
             )
 
-            // empurra o Score totalmente para a esquerda e o
+            // Empurra o Score totalmente para a esquerda e o
             // painel de vidas totalmente para a direita
             Spacer(
                 modifier = Modifier.weight(1f)
             )
 
-            // informações do painel de vidas
+            // Informações do painel de vidas
             Text(
                 text = "Lives: ",
                 fontWeight = FontWeight.Bold,
@@ -104,7 +99,7 @@ fun BasicComponentsScreen(modifier: Modifier = Modifier) {
 
         }
 
-        // fileira dos inimigos (verde, vermelho, azul, amarelo, verde)
+        // Fileira dos inimigos (verde, vermelho, azul, amarelo, verde)
         Column {
             Row {
                 AndroidEnemy(
@@ -134,23 +129,19 @@ fun BasicComponentsScreen(modifier: Modifier = Modifier) {
             }
         }
 
-        Box(
-            modifier = Modifier
-                .padding(bottom = 32.dp)
-                .size(60.dp),
-            contentAlignment = Alignment.Center
+        Spacer(
+            modifier = Modifier.weight(1f)
+        )
+
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Image(painter = painterResource(R.drawable.nome_do_seu_cubo),
-            // contentDescription = null)
-            Box(
+            // Chama a função da logo
+            StartIcone(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color(0xFF4285F4), shape = RoundedCornerShape(12.dp))
-            )
-            Box(
-                modifier = Modifier
-                    .size(40.dp)
-                    .background(Color(0xFF34A853), shape = RoundedCornerShape(8.dp))
+                    .padding(bottom = 32.dp)
+                    .size(100.dp)
             )
         }
 
@@ -167,7 +158,7 @@ fun BasicComponentsScreen(modifier: Modifier = Modifier) {
                 text = "PRESS START",
                 color = Color.White,
                 fontSize = 18.sp,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.Bold
             )
         }
     }
@@ -183,5 +174,16 @@ fun AndroidEnemy(
         painter = painterResource(R.drawable.ic_launcher_foreground),
         colorFilter = ColorFilter.tint(color = color),
         contentDescription = "Android Enemy"
+    )
+}
+
+@Composable
+fun StartIcone(
+    modifier: Modifier = Modifier
+) {
+    Image(
+        modifier = modifier,
+        painter = painterResource(R.drawable.icone_sem_background),
+        contentDescription = "Nave espacial"
     )
 }
