@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -25,7 +27,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.layoutestatico.ui.theme.LayoutEstaticoTheme
@@ -41,6 +45,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
+                GameHover()
             }
         }
     }
@@ -48,7 +53,6 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BasicComponentsScreen(modifier: Modifier = Modifier) {
-
     // Coluna base da tela
     Column(
         modifier = modifier
@@ -187,3 +191,54 @@ fun StartIcone(
         contentDescription = "Nave espacial"
     )
 }
+@Composable
+fun GameHover(modifier: Modifier = Modifier) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(Color.Black),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+
+        Box(
+            contentAlignment = Alignment.Center
+        ) {
+
+            Row {
+                AndroidEnemy(
+                    modifier = Modifier.size(80.dp),
+                    color = Color(124, 248, 110, 255)
+                )
+
+                AndroidEnemy(
+                    modifier = Modifier.size(80.dp),
+                    color = Color.Red
+                )
+
+                AndroidEnemy(
+                    modifier = Modifier.size(80.dp),
+                    color = Color.Blue
+                )
+
+                AndroidEnemy(
+                    modifier = Modifier.size(80.dp),
+                    color = Color.Yellow
+                )
+
+                AndroidEnemy(
+                    modifier = Modifier.size(80.dp),
+                    color = Color.Green
+                )
+            }
+
+            Text(
+                text = "GAME OVER",
+                color = Color.White,
+                fontSize = 60.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+    }
+}
+
